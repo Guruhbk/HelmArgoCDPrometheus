@@ -1,0 +1,4 @@
+FROM guruhbk/microservicebase:latest
+COPY ./microService5/* .
+EXPOSE 3005
+CMD [ "index.js" ]
