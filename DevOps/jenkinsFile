@@ -4,7 +4,7 @@ pipeline{
         stage('build base image'){
             steps{
                 sh '''
-                docker build -t guruhbk/dockerbase -f ./DevOps/Dockerbase
+                docker build -t guruhbk/dockerbase -f ./DevOps/Dockerbase .
                 docker push guruhbk/dockerbase
                 '''
             }
@@ -14,7 +14,7 @@ pipeline{
                 stage('microservice1'){
                     steps{
                     sh '''
-                    docker build -t guruhbk/microservice1 -f ./DevOps/Dockerfile1
+                    docker build -t guruhbk/microservice1 -f ./DevOps/Dockerfile1 .
                     docker push guruhbk/microservice1
                     '''
                     }
@@ -22,7 +22,7 @@ pipeline{
                 stage('microservice2'){
                     steps{
                     sh '''
-                    docker build -t guruhbk/microservice2 -f ./DevOps/Dockerfile2
+                    docker build -t guruhbk/microservice2 -f ./DevOps/Dockerfile2 .
                     docker push guruhbk/microservice2
                     '''
                     }
@@ -30,7 +30,7 @@ pipeline{
                 stage('microservice3'){
                     steps{
                     sh '''
-                    docker build -t guruhbk/microservice3 -f ./DevOps/Dockerfile3
+                    docker build -t guruhbk/microservice3 -f ./DevOps/Dockerfile3 .
                     docker push guruhbk/microservice3
                     '''
                     }
@@ -38,7 +38,7 @@ pipeline{
                 stage('microservice4'){
                     steps{
                     sh '''
-                    docker build -t guruhbk/microservice4 -f ./DevOps/Dockerfile4
+                    docker build -t guruhbk/microservice4 -f ./DevOps/Dockerfile4 .
                     docker push guruhbk/microservice4
                     '''
                     }
@@ -46,7 +46,7 @@ pipeline{
                 stage('microservice5'){
                     steps{
                     sh '''
-                    docker build -t guruhbk/microservice5 -f ./DevOps/Dockerfile5
+                    docker build -t guruhbk/microservice5 -f ./DevOps/Dockerfile5 .
                     docker push guruhbk/microservice5
                     '''
                     }
