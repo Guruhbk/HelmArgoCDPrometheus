@@ -2,7 +2,7 @@ pipeline{
     agent any
     stages{
         stage('build base image'){
-            step{
+            steps{
                 sh '''
                 docker build -t guruhbk/dockerbase -f ./DevOps/Dockerbase
                 docker push guruhbk/dockerbase
@@ -11,7 +11,7 @@ pipeline{
         }
         stage('microservice-build'){
             parallel{
-                stage('microservice1'){
+                steps('microservice1'){
                     step{
                     sh '''
                     docker build -t guruhbk/microservice1 -f ./DevOps/Dockerfile1
@@ -19,7 +19,7 @@ pipeline{
                     '''
                     }
                 }
-                stage('microservice2'){
+                steps('microservice2'){
                     step{
                     sh '''
                     docker build -t guruhbk/microservice2 -f ./DevOps/Dockerfile2
@@ -28,7 +28,7 @@ pipeline{
                     }
                 }
                 stage('microservice3'){
-                    step{
+                    steps{
                     sh '''
                     docker build -t guruhbk/microservice3 -f ./DevOps/Dockerfile3
                     docker push guruhbk/microservice3
@@ -36,7 +36,7 @@ pipeline{
                     }
                 }
                 stage('microservice4'){
-                    step{
+                    steps{
                     sh '''
                     docker build -t guruhbk/microservice4 -f ./DevOps/Dockerfile4
                     docker push guruhbk/microservice4
@@ -44,7 +44,7 @@ pipeline{
                     }
                 }
                 stage('microservice5'){
-                    step{
+                    steps{
                     sh '''
                     docker build -t guruhbk/microservice5 -f ./DevOps/Dockerfile5
                     docker push guruhbk/microservice5
