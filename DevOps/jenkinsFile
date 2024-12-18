@@ -11,16 +11,16 @@ pipeline{
         }
         stage('microservice-build'){
             parallel{
-                steps('microservice1'){
-                    step{
+                stage('microservice1'){
+                    steps{
                     sh '''
                     docker build -t guruhbk/microservice1 -f ./DevOps/Dockerfile1
                     docker push guruhbk/microservice1
                     '''
                     }
                 }
-                steps('microservice2'){
-                    step{
+                stage('microservice2'){
+                    steps{
                     sh '''
                     docker build -t guruhbk/microservice2 -f ./DevOps/Dockerfile2
                     docker push guruhbk/microservice2
