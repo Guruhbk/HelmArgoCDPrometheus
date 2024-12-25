@@ -43,11 +43,13 @@ async function fetchWithHeaders() {
 }
 
 app.get('/getData',async(req, res)=>{
-    
+try{  
 return res.send({
     data: "Hello world"
 });
-
+}catch(e){
+  return res.send(e.message)
+}
 })
 app.listen(3005)
 
