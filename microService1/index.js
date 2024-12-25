@@ -7,6 +7,7 @@ const axios = require('axios');
 // Example with timeout and headers
 async function fetchWithHeaders() {
   try {
+    console.log(process.env)
     const response = await axios.get(`${process.env.MICROSERVICE2}/getData`, {
       headers: {
         'Content-Type': 'application/json',
