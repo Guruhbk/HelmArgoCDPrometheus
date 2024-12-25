@@ -1,0 +1,48 @@
+{{- range .Values.microservices }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  # Uncomment and fix the name logic when ready
+  # name: {{ include "microservices.fullname" (dict "Release" $.Release "Values" . "Chart" $.Chart) }}
+  name: {{ printf "%s-deployment" .name }}
+  labels:
+    {{- include "microservices.labels" (dict "Chart" $.Chart "Release" $.Release "Values" .) | nindent 4 }}
+    {{- with .labels }}
+    {{- toYaml . | nindent 4}}
+    {{- end }}
+spec:
+  {{- if not $.Values.autoscaling.enabled }}
+  replicas: {{ .replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+    {{- with .labels }}
+    {{- toYaml . | nindent 6}}
+    {{- end }}
+
+  template:
+    metadata:
+      {{- with .podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "microservices.labels" (dict "Chart" $.Chart "Release" $.Release "Values" .) | nindent 8 }}
+        {{- with .labels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+    spec:
+      {{- with .imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: {{ $.Chart.Name }}
+          image: "{{ .image.repository }}:{{ .image.tag }}"
+          imagePullPolicy: {{ .image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .ports.containerPort }}
+              protocol: TCP
+{{- end }}

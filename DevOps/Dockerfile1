@@ -1,4 +1,4 @@
 FROM guruhbk/microservicebase:latest
-COPY ./microService3/* .
-EXPOSE 3003
+COPY ./microService1/* .
+EXPOSE 3001
 CMD [ "index.js" ]
