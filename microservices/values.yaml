@@ -132,7 +132,7 @@ microservices:
     image:
       repository: guruhbk/microservice1
       tag: latest
-      pullPolicy: "IfNotPresent"
+      pullPolicy: "Always"
     ports:
       containerPort: 3001
     resources:
@@ -147,7 +147,7 @@ microservices:
     image:
       repository: guruhbk/microservice2
       tag: latest
-      pullPolicy: "IfNotPresent"
+      pullPolicy: "Always"
     ports:
       containerPort: 3002
     resources:
@@ -162,9 +162,9 @@ microservices:
     image:
       repository: guruhbk/microservice3
       tag: latest
-      pullPolicy: "IfNotPresent"
+      pullPolicy: "Always"
     ports:
-      containerPort: 3002
+      containerPort: 3003
     resources:
       limits:
         cpu: "300m"
@@ -177,9 +177,9 @@ microservices:
     image:
       repository: guruhbk/microservice3
       tag: latest
-      pullPolicy: "IfNotPresent"
+      pullPolicy: "Always"
     ports:
-      containerPort: 3003
+      containerPort: 3004
     resources:
       limits:
         cpu: "300m"
@@ -192,9 +192,9 @@ microservices:
     image:
       repository: guruhbk/microservice3
       tag: latest
-      pullPolicy: "IfNotPresent"
+      pullPolicy: "Always"
     ports:
-      containerPort: 3001
+      containerPort: 3005
     resources:
       limits:
         cpu: "300m"
