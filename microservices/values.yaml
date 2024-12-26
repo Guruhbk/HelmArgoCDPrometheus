@@ -175,7 +175,7 @@ microservices:
     labels: 
       app: microservice4
     image:
-      repository: guruhbk/microservice3
+      repository: guruhbk/microservice4
       tag: latest
       pullPolicy: "Always"
     ports:
@@ -190,7 +190,7 @@ microservices:
     labels: 
       app: microservice5
     image:
-      repository: guruhbk/microservice3
+      repository: guruhbk/microservice5
       tag: latest
       pullPolicy: "Always"
     ports:
